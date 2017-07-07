@@ -1,0 +1,42 @@
+{% extends "mydoctor/index.html"  %}
+{% block body %}
+
+
+    <div class="login_wrapper">
+       <div id="login" class=" animate form login_form">
+          <section class="login_content">
+
+            <form method="post" action="">
+                {% csrf_token %}
+                 <h1>Регистрация</h1>
+               {% for field in form %}
+                  {{ field }}
+                   <p class="errors">{{ field.errors }}</p>
+                {% endfor %}
+
+                <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+
+              <div class="clearfix"></div>
+
+              <div class="separator">
+                <p class="change_link">Уже зарегистрированны?
+                  <a href="{% url 'login' %}" class="to_register"> Войти </a>
+                </p>
+
+                <div class="clearfix"></div>
+                <br />
+
+                <div>
+                  <h1><i class="fa fa-heartbeat"></i> My Doctor!</h1>
+                  <p> © 2016-2017 Дергачев Никита <a href="http://127.0.0.1:8000/mydoctor/">MyDoctor</a></p>
+                </div>
+              </div>
+            </form>
+          </section>
+        </div>
+
+</div>
+
+
+{% endblock %}
+

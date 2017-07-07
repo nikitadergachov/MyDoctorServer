@@ -1,0 +1,33 @@
+{% for patient in patients %}
+                            <tr >
+
+                              <th>{{ patient.id}}</th>
+                              <th>{{ patient.name }}</th>
+                              <th>{{ patient.phone_number }}</th>
+                                <th>{{ patient.email }}</th>
+                                <th>{{ patient.insurance_number}}</th>
+                                <th>{{ patient.DOB}}</th>
+
+                              <th>{{ patient.date_joined }}</th>
+
+
+                                <th><button type="button"
+                                            class="btn btn-success"
+                                            id="patient-update"
+                                            data-url="{% url 'patient_update' patient.id %}">
+                                    Изменить</button></th>
+
+                            <th><button type="button"
+                                        class="btn btn-danger"
+                                        id="patient-delete"
+                                        data-url="{% url 'patient_delete' patient.id %}">
+                                Удалить</button> </th>
+
+
+                            <th>
+                            <p><a href="{% url 'recommendation_list' patient.id %}" class="btn btn-info">Рекомендации</a>
+                            </th>
+
+                            </tr>
+
+                        {% endfor %}

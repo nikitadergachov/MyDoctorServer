@@ -1,0 +1,41 @@
+.error-color{
+    color: tomato;
+}
+
+.check-color{
+    color: #00A000;
+}
+
+.btn span.glyphicon {
+	opacity: 0;
+}
+.btn.active span.glyphicon {
+	opacity: 1;
+}
+
+/*checkbox*/
+
+.big-check{
+    transform: scale(1.5,1.5);
+    opacity:1;
+    cursor:pointer;
+
+}
+
+
+.ui-autocomplete {
+    z-index: 5000;
+}
+
+.ui-autocomplete-input {
+  border: none;
+  font-size: 14px;
+  width: 300px;
+  height: 24px;
+  margin-bottom: 5px;
+  padding-top: 2px;
+  border: 1px solid #DDD !important;
+  padding-top: 0px !important;
+  z-index: 1511;
+  position: relative;
+}

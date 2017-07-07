@@ -1,0 +1,26 @@
+{% extends 'mydoctor/base/modal.html' %}
+{% block modal-id %}update-modal{% endblock %}
+{% block modal_title %}
+    Изменить данные пациента
+{% endblock %}
+{% block modal_form %}
+ <form method="post"  >
+        {% csrf_token %}
+          <div class="modal-body">
+
+             {% for form in forms %}
+            {{ form }}
+             <p class="errors">{{ form.errors }}</p>
+        {% endfor %}
+          </div>
+          <!-- Футер модального окна -->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+            <button type="button" class="btn btn-primary" id="edit"  >Сохранить изменения</button>
+          </div>
+    </form>
+
+<script>
+
+</script>
+{% endblock %}

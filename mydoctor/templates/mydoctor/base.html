@@ -1,0 +1,14 @@
+{% extends "mydoctor/index.html" %}
+
+    {% block body %}
+        <div class="container body">
+            <div class="main_container">
+                {% include "mydoctor/navbar.html" %}
+                {% block content %}
+
+                {% endblock %}
+                {% include "mydoctor/footer.html" %}
+            </div>
+        </div>
+
+    {% endblock %}

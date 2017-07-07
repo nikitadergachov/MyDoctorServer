@@ -1,0 +1,212 @@
+{% extends "mydoctor/base.html" %}
+{% load staticfiles %}
+
+    {% block content %}
+
+
+
+
+        <div class="clearfix"></div>
+        <div class="right_col" role="main">
+
+            <div class="row">
+                <div class="x_content">
+
+
+                    <div class="clearfix"></div>
+
+
+
+                    {% include 'mydoctor/completed_recomendation/medicines_table.html' %}
+
+                  </div>
+
+        </div>
+
+
+                  <div class="row">
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>График принятых таблеток</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+
+
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <canvas id="medicines-chart"></canvas>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Круговая диаграмма принятых таблеток</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                    <canvas id="medicines-pie"></canvas>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+  <div class="modal fade" id="modal-patient">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+      </div>
+    </div>
+  </div>
+        </div>
+
+{% block script %}
+
+
+    <script src="{% static 'mydoctor/lib/vendors/jquery/dist/jquery.min.js' %}"></script>
+    <!-- Bootstrap -->
+    <script src="{% static 'mydoctor/lib/vendors/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <!-- FastClick -->
+    <script src="{% static 'mydoctor/lib/vendors/fastclick/lib/fastclick.js' %}"></script>
+    <!-- NProgress -->
+    <script src="{% static 'mydoctor/lib/vendors/nprogress/nprogress.js' %}"></script>
+    <!-- Chart.js -->
+    <script src="{% static 'mydoctor/lib/vendors/Chart.js/dist/Chart.min.js' %}"></script>
+    <!-- gauge.js -->
+    <script src="{% static 'mydoctor/lib/vendors/gauge.js/dist/gauge.min.js' %}"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="{% static 'mydoctor/lib/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js' %}"></script>
+    <!-- iCheck -->
+    <script src="{% static 'mydoctor/lib/vendors/iCheck/icheck.min.js' %}"></script>
+    <!-- Skycons -->
+    <script src="{% static 'mydoctor/lib/vendors/skycons/skycons.js' %}"></script>
+    <!-- Flot -->
+    <script src="{% static 'mydoctor/lib/vendors/Flot/jquery.flot.js' %}"></script>
+    <script src="{% static 'mydoctor/lib/vendors/Flot/jquery.flot.pie.js' %}"></script>
+    <script src="{% static 'mydoctor/lib/vendors/Flot/jquery.flot.time.js' %}"></script>
+    <script src="{% static 'mydoctor/lib/vendors/Flot/jquery.flot.stack.js' %}"></script>
+    <script src="{% static 'mydoctor/lib/vendors/Flot/jquery.flot.resize.js' %}"></script>
+    <!-- Flot plugins -->
+    <script src="{% static 'mydoctor/lib/vendors/flot.orderbars/js/jquery.flot.orderBars.js' %}"></script>
+    <script src="{% static 'mydoctor/lib/vendors/flot-spline/js/jquery.flot.spline.min.js' %}"></script>
+    <script src="{% static 'mydoctor/lib/vendors/flot.curvedlines/curvedLines.js' %}"></script>
+    <!-- DateJS -->
+    <script src="{% static 'mydoctor/lib/vendors/DateJS/build/date.js' %}"></script>
+    <!-- JQVMap -->
+    <script src="{% static 'mydoctor/lib/vendors/jqvmap/dist/jquery.vmap.js' %}"></script>
+    <script src="{% static 'mydoctor/lib/vendors/jqvmap/dist/maps/jquery.vmap.world.js' %}"></script>
+    <script src="{% static 'mydoctor/lib/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js' %}"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="{% static 'mydoctor/lib/vendors/moment/min/moment.min.js' %}"></script>
+    <script src="{% static 'mydoctor/lib/vendors/bootstrap-daterangepicker/daterangepicker.js' %}"></script>
+
+
+    <script src="{% static 'mydoctor/src/js/script.js' %}"></script>
+
+
+
+            <script src="{% static 'mydoctor/lib/vendors/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'mydoctor/lib/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js' %}"></script>
+    <script src="{% static 'mydoctor/lib/vendors/datatables.net-buttons/js/dataTables.buttons.min.js' %}"></script>
+    <script src="{% static 'mydoctor/lib/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js' %}"></script>
+    <script src="{% static 'mydoctor/lib/vendors/datatables.net-buttons/js/buttons.flash.min.js' %}"></script>
+    <script src="{% static 'mydoctor/lib/vendors/datatables.net-buttons/js/buttons.html5.min.js' %}"></script>
+    <script src="{% static 'mydoctor/lib/vendors/datatables.net-buttons/js/buttons.print.min.js' %}"></script>
+    <script src="{% static 'mydoctor/lib/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js' %}"></script>
+    <script src="{% static 'mydoctor/lib/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js' %}"></script>
+    <script src="{% static 'mydoctor/lib/vendors/datatables.net-responsive/js/dataTables.responsive.min.js' %}"></script>
+    <script src="{% static 'mydoctor/lib/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js' %}"></script>
+    <script src="{% static 'mydoctor/lib/vendors/datatables.net-scroller/js/dataTables.scroller.min.js' %}"></script>
+    <script src="{% static 'mydoctor/lib/vendors/jszip/dist/jszip.min.js' %}"></script>
+    <script src="{% static 'mydoctor/lib/vendors/pdfmake/build/pdfmake.min.js' %}"></script>
+    <script src="{% static 'mydoctor/lib/vendors/pdfmake/build/vfs_fonts.js' %}"></script>
+
+            <script src="{% static 'mydoctor/lib/vendors/autocomplete-master/jquery.autocomplete.js' %}"></script>
+<script>
+var ctx = document.getElementById("medicines-chart");
+    var currentTime = new Date()
+    var lineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [{% for item in medicines %}
+                "{{ item.date_of_taking_medicine}}",
+            {% endfor %}],
+            datasets: [{
+                label: "Количество принятых таблеток",
+                backgroundColor: "rgba(38, 185, 154, 0.31)",
+                borderColor: "rgba(38, 185, 154, 0.7)",
+                pointBorderColor: "rgba(38, 185, 154, 0.7)",
+                pointBackgroundColor: "rgba(38, 185, 154, 0.7)",
+                pointHoverBackgroundColor: "#fff",
+                pointHoverBorderColor: "rgba(220,220,220,1)",
+                pointBorderWidth: 1,
+                data: [{% for item in medicines %}
+                {{ item.number_of_medication_taken}},
+            {% endfor %}]
+            }, {
+                label: "Количество таблеток которые необходимо принять",
+                backgroundColor: "rgba(3, 88, 106, 0.3)",
+                borderColor: "rgba(3, 88, 106, 0.70)",
+                pointBorderColor: "rgba(3, 88, 106, 0.70)",
+                pointBackgroundColor: "rgba(3, 88, 106, 0.70)",
+                pointHoverBackgroundColor: "#fff",
+                pointHoverBorderColor: "rgba(151,187,205,1)",
+                pointBorderWidth: 1,
+                data: [{% for item in medicines %}
+                {{ item.number_of_necessary_medicine}},
+            {% endfor %}]
+            }]
+        }});
+
+
+
+
+
+        var context = document.getElementById("medicines-pie");
+
+   var data = {
+					datasets: [{
+					  data: [{{ count_taken }}, {{ count }}],
+					  backgroundColor: [
+						"#9B59B6",
+						"#26B99A",
+					  ],
+					  label: 'My dataset' // for legend
+					}],
+					labels: [
+					  "Количество принятых таблеток",
+					  "Количество таблеток которые небоходимо принять",
+
+					]
+				  };
+
+				  var pieChart = new Chart(context, {
+					data: data,
+					type: 'pie',
+					otpions: {
+					  legend: false
+					}
+				  });
+
+
+</script>
+    {% endblock %}
+
+    {% endblock %}

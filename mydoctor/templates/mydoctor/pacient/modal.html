@@ -1,0 +1,12 @@
+{% extends 'mydoctor/base/modal.html' %}
+{% block modal_title %}
+    Добавить пациента
+{% endblock %}
+{% block modal_content %}
+
+        {% for form in forms %}
+            {{ form }}
+             <p class="errors">{{ form.errors }}</p>
+        {% endfor %}
+
+{% endblock %}
